@@ -156,20 +156,30 @@ GITHUB_TOKEN=your-github-token
 This project is configured for remote Augment agents with:
 
 - **Environment isolation** - Separate configs for different environments
-- **Docker support** - Containerized development and agent environments
+- **Lightweight setup** - No Docker required, runs directly on your system
 - **GitHub integration** - Seamless code collaboration
 - **Hot reload** - Live updates during development
 
 ### For Remote Agents
 
-1. **Using Docker Compose**
+1. **Quick Setup**
    ```bash
-   docker-compose up remote-agent
+   # Run the setup script
+   .\scripts\setup-env.ps1  # Windows
+   ./scripts/setup-env.sh   # Unix/Linux/macOS
+
+   # Start development environment
+   npm run dev
    ```
 
 2. **Manual Setup**
    ```bash
-   # Set agent-specific environment
+   # Set agent-specific environment variables
+   # Windows (PowerShell)
+   $env:AUGMENT_DEV_MODE="true"
+   $env:AUGMENT_LOG_LEVEL="verbose"
+
+   # Unix/Linux/macOS
    export AUGMENT_DEV_MODE=true
    export AUGMENT_LOG_LEVEL=verbose
 
