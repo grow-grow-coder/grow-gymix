@@ -1,0 +1,377 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Custom CSS Classes for GROW YouR NEED */
+
+/* Glass Skeuomorphism Effects */
+.glass-skeuomorphism {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-glass-skeuomorphism {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card-glass-skeuomorphism:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Gradient Radial Background */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Enhanced Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, #E0B58F, #D4A574);
+  border: 1px solid rgba(224, 181, 143, 0.3);
+  box-shadow:
+    0 4px 15px rgba(224, 181, 143, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #F0C59F, #E4B584);
+  box-shadow:
+    0 8px 25px rgba(224, 181, 143, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Loading Spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin 3s linear infinite;
+}
+
+/* Text Glow Effects */
+.text-glow {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+}
+
+.text-glow-lg {
+  text-shadow: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+}
+
+/* Responsive Design Helpers */
+@media (max-width: 768px) {
+  .glass-skeuomorphism {
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+  }
+
+  .card-glass-skeuomorphism {
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  /* 🚀 REVOLUTIONARY CUTTING-EDGE BACKGROUND */
+  background:
+    radial-gradient(circle at 20% 80%, rgba(224, 181, 143, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(76, 104, 192, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(42, 46, 112, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #0F0F23 0%, #1A1A3A 50%, #0F0F23 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  /* 🚀 PERFORMANCE OPTIMIZATIONS */
+  will-change: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  overflow-x: hidden;
+}
+
+/* 🚀 REVOLUTIONARY CUTTING-EDGE GLASS SYSTEM */
+
+/* Clean Glass Skeumorphism */
+.glass-skeuomorphism {
+  position: relative;
+  backdrop-filter: blur(15px) saturate(1.1) brightness(1.05);
+  background: transparent;
+  border-radius: 16px;
+  /* 🚀 PERFORMANCE OPTIMIZATIONS */
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+/* Clean Card Glass Skeumorphism */
+.card-glass-skeuomorphism {
+  position: relative;
+  backdrop-filter: blur(12px) saturate(1.1) brightness(1.05);
+  background: transparent;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+/* Clean Card Hover Effect */
+.card-glass-skeuomorphism:hover {
+  transform: translateY(-4px);
+}
+
+/* Text enhancement for glass content */
+.glass-text {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle accent lines */
+.accent-line {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  height: 1px;
+  width: 100%;
+}
+
+/* 🚀 CUTTING-EDGE UTILITIES */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.smooth-transition {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 🌟 REVOLUTIONARY GRADIENT UTILITIES */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+}
+
+/* 💫 STUNNING ANIMATION UTILITIES */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 4s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Clean Hover Effects */
+.glass-skeuomorphism:hover {
+  transform: translateY(-2px);
+}
+
+/* 🚀 REVOLUTIONARY CLERK STYLING */
+.clerk-signin-wrapper {
+  /* Custom styling for Clerk components */
+}
+
+.clerk-signin-wrapper .cl-rootBox {
+  width: 100%;
+}
+
+.clerk-signin-wrapper .cl-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.clerk-signin-wrapper .cl-headerTitle {
+  color: #F5F0E9 !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.clerk-signin-wrapper .cl-headerSubtitle {
+  color: #D9CBC2 !important;
+  text-align: center !important;
+  margin-bottom: 2rem !important;
+}
+
+.clerk-signin-wrapper .cl-socialButtonsBlockButton {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+  border: 1px solid rgba(224, 181, 143, 0.3) !important;
+  border-radius: 1rem !important;
+  color: #F5F0E9 !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(12px) !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.clerk-signin-wrapper .cl-socialButtonsBlockButton:hover {
+  background: linear-gradient(to right, rgba(224, 181, 143, 0.2), rgba(224, 181, 143, 0.1)) !important;
+  border-color: rgba(224, 181, 143, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+.clerk-signin-wrapper .cl-formFieldLabel {
+  color: #F5F0E9 !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.clerk-signin-wrapper .cl-formFieldInput {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05)) !important;
+  border: 1px solid rgba(224, 181, 143, 0.3) !important;
+  border-radius: 1rem !important;
+  color: #F5F0E9 !important;
+  padding: 1rem !important;
+  transition: all 0.3s ease !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+.clerk-signin-wrapper .cl-formFieldInput:focus {
+  outline: none !important;
+  ring: 2px solid #E0B58F !important;
+  border-color: #E0B58F !important;
+}
+
+.clerk-signin-wrapper .cl-formFieldInput::placeholder {
+  color: rgba(217, 203, 194, 0.6) !important;
+}
+
+.clerk-signin-wrapper .cl-formButtonPrimary {
+  background: linear-gradient(to right, #E0B58F, #D4A574) !important;
+  color: #112250 !important;
+  font-weight: 700 !important;
+  padding: 1rem !important;
+  border-radius: 1rem !important;
+  transition: all 0.3s ease !important;
+  border: 1px solid rgba(224, 181, 143, 0.3) !important;
+  width: 100% !important;
+}
+
+.clerk-signin-wrapper .cl-formButtonPrimary:hover {
+  background: linear-gradient(to right, #F0C59F, #E4B584) !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 20px 40px rgba(224, 181, 143, 0.25) !important;
+}
+
+.clerk-signin-wrapper .cl-footerActionLink {
+  color: #E0B58F !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+
+.clerk-signin-wrapper .cl-footerActionLink:hover {
+  color: #F5F0E9 !important;
+  text-decoration: underline !important;
+}
+
+.clerk-signin-wrapper .cl-dividerLine {
+  background-color: rgba(224, 181, 143, 0.3) !important;
+}
+
+.clerk-signin-wrapper .cl-dividerText {
+  color: #D9CBC2 !important;
+}
+
+/* 🚀 MOBILE INLINE UTILITIES */
+/* Hide scrollbar for inline elements */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+
