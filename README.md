@@ -151,41 +151,68 @@ AUGMENT_AGENT_TOKEN=your-agent-token
 GITHUB_TOKEN=your-github-token
 ```
 
-## 🤖 Remote Agent Support
+## 🤖 Augment Remote Agent Support
 
-This project is configured for remote Augment agents with:
+This project is fully configured for **Augment Remote Agents** - cloud-based development environments that run in secure Ubuntu 22.04 containers.
 
-- **Environment isolation** - Separate configs for different environments
-- **Lightweight setup** - No Docker required, runs directly on your system
-- **GitHub integration** - Seamless code collaboration
-- **Hot reload** - Live updates during development
+### ✨ Remote Agent Features
 
-### For Remote Agents
+- **🔒 Secure cloud environments** - Each agent runs in isolation
+- **🚀 Pre-configured setup scripts** - Automated environment preparation
+- **🔄 GitHub integration** - Seamless repository access and PR creation
+- **⚡ Hot reload** - Live updates during development
+- **🛠️ Full VS Code support** - SSH access to remote environments
 
-1. **Quick Setup**
+### 📁 Environment Scripts
+
+The project includes custom environment setup scripts in `.augment/env/`:
+
+- **`grow-gymix-setup.sh`** - Full development environment setup
+- **`minimal-setup.sh`** - Lightweight setup for quick deployment
+
+### 🚀 Using Remote Agents
+
+1. **Create a Remote Agent in VS Code:**
+   - Open Augment panel
+   - Select "Remote Agent" from dropdown
+   - Choose repository: `grow-grow-coder/grow-gymix`
+   - Select environment: `grow-gymix-setup.sh`
+   - Enter your task description
+
+2. **Environment Setup:**
+   The agent will automatically:
+   - Install Node.js dependencies
+   - Configure Convex CLI
+   - Set up development environment variables
+   - Create `.env` file from template
+   - Configure git settings
+
+3. **Available Commands in Remote Agent:**
    ```bash
-   # Run the setup script
-   .\scripts\setup-env.ps1  # Windows
-   ./scripts/setup-env.sh   # Unix/Linux/macOS
-
-   # Start development environment
-   npm run dev
+   npm run dev              # Start development server
+   npm run dev:frontend     # Frontend only
+   npm run dev:backend      # Convex backend only
+   npx convex dev          # Convex development mode
+   ~/start-dev.sh          # Show environment info
    ```
 
-2. **Manual Setup**
-   ```bash
-   # Set agent-specific environment variables
-   # Windows (PowerShell)
-   $env:AUGMENT_DEV_MODE="true"
-   $env:AUGMENT_LOG_LEVEL="verbose"
+### 🔧 Remote Agent Environment Variables
 
-   # Unix/Linux/macOS
-   export AUGMENT_DEV_MODE=true
-   export AUGMENT_LOG_LEVEL=verbose
+The setup script automatically configures:
+```bash
+NODE_ENV=development
+AUGMENT_REMOTE_AGENT=true
+AUGMENT_DEV_MODE=true
+VITE_APP_ENV=development
+VITE_ENABLE_DEBUG=true
+```
 
-   # Start development environment
-   npm run dev
-   ```
+### 📝 Important Notes
+
+- **GitHub Token Required:** Remote Agents need GitHub access for repository operations
+- **Environment Persistence:** Variables are saved to `~/.bashrc` for session persistence
+- **SSH Access:** Use VS Code Remote-SSH extension to connect directly to agents
+- **Automatic PR Creation:** Agents can create pull requests when tasks are complete
 
 ## 🔑 Demo Credentials
 

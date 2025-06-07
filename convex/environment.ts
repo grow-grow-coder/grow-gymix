@@ -59,13 +59,15 @@ export const config = {
     enableConsoleOutput: getEnvironment() !== 'production',
   },
   
-  // Remote agent configuration
-  remoteAgents: {
-    enabled: true,
-    allowedOrigins: getEnvironment() === 'production' 
-      ? ['https://your-domain.com'] 
-      : ['http://localhost:5173', 'http://localhost:3000'],
-    maxConcurrentAgents: getEnvironment() === 'production' ? 10 : 5,
+  // Augment Remote Agent configuration
+  augmentRemoteAgent: {
+    enabled: process.env.AUGMENT_REMOTE_AGENT === 'true',
+    isCloudEnvironment: process.env.AUGMENT_REMOTE_AGENT === 'true',
+    allowedOrigins: getEnvironment() === 'production'
+      ? ['https://your-domain.com']
+      : ['http://localhost:5173', 'http://localhost:3000', 'https://*.augmentcode.com'],
+    maxConcurrentConnections: getEnvironment() === 'production' ? 10 : 5,
+    logLevel: process.env.AUGMENT_LOG_LEVEL || 'info',
   },
 };
 

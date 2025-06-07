@@ -48,12 +48,14 @@ export const config = {
     mixpanelToken: import.meta.env.VITE_MIXPANEL_TOKEN || '',
   },
   
-  // Remote agent configuration
-  remoteAgents: {
-    enabled: true,
+  // Augment Remote Agent configuration
+  augmentRemoteAgent: {
+    enabled: import.meta.env.VITE_AUGMENT_REMOTE_MODE === 'true' ||
+             typeof process !== 'undefined' && process.env.AUGMENT_REMOTE_AGENT === 'true',
+    agentId: import.meta.env.VITE_AUGMENT_AGENT_ID || '',
     devMode: import.meta.env.VITE_AUGMENT_DEV_MODE === 'true',
     logLevel: import.meta.env.VITE_AUGMENT_LOG_LEVEL || 'info',
-    enableLiveReload: import.meta.env.VITE_AUGMENT_ENABLE_LIVE_RELOAD === 'true',
+    isCloudEnvironment: typeof process !== 'undefined' && process.env.AUGMENT_REMOTE_AGENT === 'true',
   },
   
   // GitHub integration
@@ -104,5 +106,16 @@ if (isDevelopment()) {
     convexUrl: config.convex.url ? '✅ Set' : '❌ Missing',
     devTools: config.dev.showDevTools ? '✅ Enabled' : '❌ Disabled',
     features: config.features,
+    augmentRemoteAgent: config.augmentRemoteAgent.enabled ? '🤖 Active' : '❌ Disabled',
   });
+
+  // Special logging for Remote Agents
+  if (config.augmentRemoteAgent.enabled) {
+    console.log('🤖 Augment Remote Agent Environment:', {
+      agentId: config.augmentRemoteAgent.agentId || 'Not set',
+      cloudEnvironment: config.augmentRemoteAgent.isCloudEnvironment ? '☁️ Cloud' : '💻 Local',
+      devMode: config.augmentRemoteAgent.devMode ? '🔧 Development' : '🚀 Production',
+      logLevel: config.augmentRemoteAgent.logLevel,
+    });
+  }
 }
