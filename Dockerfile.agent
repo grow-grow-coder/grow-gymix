@@ -1,0 +1,64 @@
+# =============================================================================
+# GROW GYMIX - REMOTE AGENT DOCKERFILE
+# =============================================================================
+# Dockerfile specifically for remote Augment agents
+
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /workspace
+
+# Install system dependencies for development tools
+RUN apk add --no-cache \
+    git \
+    curl \
+    vim \
+    nano \
+    python3 \
+    make \
+    g++ \
+    sqlite \
+    bash \
+    openssh-client
+
+# Install global development tools
+RUN npm install -g \
+    typescript \
+    @convex-dev/cli \
+    prettier \
+    eslint
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Copy source code
+COPY . .
+
+# Create necessary directories for agent operations
+RUN mkdir -p /workspace/logs /workspace/tmp /workspace/.augment
+
+# Set up git configuration for agents
+RUN git config --global user.name "Augment Agent" && \
+    git config --global user.email "agent@augment.dev" && \
+    git config --global init.defaultBranch main
+
+# Set permissions
+RUN chown -R node:node /workspace
+
+# Switch to non-root user
+USER node
+
+# Set environment variables for agent
+ENV AUGMENT_WORKSPACE=/workspace
+ENV AUGMENT_AGENT_MODE=true
+ENV NODE_ENV=development
+
+# Health check for agent
+HEALTHCHECK --interval=60s --timeout=10s --start-period=30s --retries=3 \
+    CMD node -e "console.log('Agent healthy')" || exit 1
+
+# Keep container running for agent operations
+CMD ["tail", "-f", "/dev/null"]

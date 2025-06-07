@@ -76,43 +76,106 @@ A comprehensive, enterprise-grade educational management system built with moder
 
 ## 🚀 Quick Start
 
+### Prerequisites
 
+- Node.js 18+
+- npm or yarn
+- Git
 
 ### Installation
 
 1. **Clone the repository**
 ```bash
-git clone <repository-url>
-cd grow-jadid
+git clone https://github.com/grow-grow-coder/grow-gymix.git
+cd grow-gymix
 ```
 
-2. **Install dependencies**
+2. **Run setup script**
+```bash
+# On Unix/Linux/macOS
+chmod +x scripts/setup-env.sh
+./scripts/setup-env.sh
+
+# On Windows (PowerShell)
+.\scripts\setup-env.ps1
+```
+
+3. **Configure environment**
+```bash
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your values
+nano .env  # or your preferred editor
+```
+
+4. **Install dependencies**
 ```bash
 npm install
 ```
 
-3. **Set up environment variables**
-```bash
-cp .env.example .env.local
-```
-```
-
-4. **Set up the database**
-```bash
-# Push schema to database
-npm run db:push
-
-# Seed with real data
-npx tsx src/db/seed.ts
-```
-
-5. **Start the development server**
+5. **Start development**
 ```bash
 npm run dev
 ```
 
 6. **Open your browser**
-Navigate to [http://localhost:3000](http://localhost:3000)
+Navigate to [http://localhost:5173](http://localhost:5173)
+
+## 🛠️ Environment Configuration
+
+### Environment Files
+
+- `.env.example` - Template with all available variables
+- `.env.development` - Development-specific settings
+- `.env.production` - Production-specific settings
+- `.env.local` - Local overrides (gitignored)
+
+### Key Environment Variables
+
+```bash
+# Convex Backend
+CONVEX_DEPLOYMENT=your-deployment
+VITE_CONVEX_URL=https://your-convex-url
+
+# Authentication
+AUTH_SECRET=your-secret-key
+GITHUB_CLIENT_ID=your-github-client-id
+GITHUB_CLIENT_SECRET=your-github-secret
+
+# AI Services
+OPENAI_API_KEY=your-openai-key
+
+# Remote Agents (Augment)
+AUGMENT_AGENT_TOKEN=your-agent-token
+GITHUB_TOKEN=your-github-token
+```
+
+## 🤖 Remote Agent Support
+
+This project is configured for remote Augment agents with:
+
+- **Environment isolation** - Separate configs for different environments
+- **Docker support** - Containerized development and agent environments
+- **GitHub integration** - Seamless code collaboration
+- **Hot reload** - Live updates during development
+
+### For Remote Agents
+
+1. **Using Docker Compose**
+   ```bash
+   docker-compose up remote-agent
+   ```
+
+2. **Manual Setup**
+   ```bash
+   # Set agent-specific environment
+   export AUGMENT_DEV_MODE=true
+   export AUGMENT_LOG_LEVEL=verbose
+
+   # Start development environment
+   npm run dev
+   ```
 
 ## 🔑 Demo Credentials
 
